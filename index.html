@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>billybong50.pages.dev</title>
+    <style>
+        /* Light Mode Defaults (matching Chrome) */
+        :root {
+            --bg-color: #fff;
+            --text-primary: #202124;
+            --text-secondary: #3c4043;
+            --text-error: #5f6368;
+            --link-color: #1a73e8;
+            --btn-secondary-bg: #fff;
+            --btn-secondary-border: #dadce0;
+            --btn-secondary-text: #5f6368;
+            --btn-secondary-hover: #f1f3f4;
+            --btn-primary-bg: #1a73e8;
+            --btn-primary-hover: #185abc;
+        }
+
+        /* Dark Mode Overrides */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #202124;
+                --text-primary: #e8eaed;
+                --text-secondary: #bdc1c6;
+                --text-error: #9aa0a6;
+                --link-color: #8ab4f8;
+                --btn-secondary-bg: #202124;
+                --btn-secondary-border: #5f6368;
+                --btn-secondary-text: #8ab4f8;
+                --btn-secondary-hover: rgba(138, 180, 248, 0.08);
+                --btn-primary-bg: #8ab4f8;
+                --btn-primary-hover: #93baf9;
+            }
+        }
+
+        body {
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 18vh; 
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+        }
+
+        /* Chrome Error Icon (Base64) */
+        .icon {
+            width: 72px; 
+            height: 72px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23737373"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .icon { filter: invert(0.2) brightness(1.5); }
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .details-text {
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+        .url { font-weight: 600; }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        li { margin-bottom: 2px; }
+
+        .fake-link {
+            color: var(--link-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .error-code {
+            font-size: 12px;
+            color: var(--text-error);
+            margin-top: 25px;
+        }
+
+        .button-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-base {
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 24px;
+            border-radius: 4px; /* Chrome buttons are slightly more rectangular */
+            transition: background-color 0.1s;
+            outline: none;
+        }
+
+        .btn-games {
+            background: var(--btn-secondary-bg);
+            border: 1px solid var(--btn-secondary-border);
+            color: var(--btn-secondary-text);
+        }
+
+        .btn-games:hover {
+            background-color: var(--btn-secondary-hover);
+        }
+
+        .btn-reload {
+            background-color: var(--btn-primary-bg);
+            color: #fff;
+            border: none;
+        }
+
+        /* Adjusting text color for dark mode button */
+        @media (prefers-color-scheme: dark) {
+            .btn-reload { color: #202124; }
+        }
+
+        .btn-reload:hover {
+            background-color: var(--btn-primary-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon"></div>
+
+        <h1>This site can’t be reached</h1>
+        
+        <div class="details-text">
+            <span class="url">billybong50.pages.dev</span>’s server IP address could not be found.
+            
+            <p>Try:</p>
+            <ul>
+                <li>Checking the connection</li>
+                <li><span class="fake-link">Checking the proxy, firewall, and DNS configuration</span></li>
+                <li><span class="fake-link">Running Connectivity Diagnostics</span></li>
+            </ul>
+        </div>
+
+        <div class="error-code">ERR_NAME_NOT_RESOLVED</div>
+
+        <div class="button-container">
+            <button class="btn-base btn-games" onclick="launch('Home', 'https://realhome-74e.pages.dev')">Games</button>
+            <button class="btn-base btn-reload" onclick="location.reload()">Reload</button>
+        </div>
+    </div>
+
+    <script>
+        function launch(name, url) {
+            const newTab = window.open('about:blank', '_blank');
+            if (!newTab) {
+                alert('Popup blocked! Please allow popups.');
+                return;
+            }
+
+            newTab.document.title = name;
+            const iframe = newTab.document.createElement('iframe');
+            iframe.src = url;
+            iframe.style.position = 'fixed';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            
+            newTab.document.body.appendChild(iframe);
+            newTab.document.body.style.margin = '0';
+        }
+    </script>
+
+</body>
+</html>
