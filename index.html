@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>billybong50.pages.dev</title>
     <style>
-        /* Light Mode Defaults (matching Chrome) */
+        /* Light Mode Variables */
         :root {
             --bg-color: #fff;
             --text-primary: #202124;
@@ -17,7 +17,9 @@
             --btn-secondary-text: #5f6368;
             --btn-secondary-hover: #f1f3f4;
             --btn-primary-bg: #1a73e8;
+            --btn-primary-text: #fff;
             --btn-primary-hover: #185abc;
+            --icon-url: url('nothere.png');
         }
 
         /* Dark Mode Overrides */
@@ -33,7 +35,9 @@
                 --btn-secondary-text: #8ab4f8;
                 --btn-secondary-hover: rgba(138, 180, 248, 0.08);
                 --btn-primary-bg: #8ab4f8;
+                --btn-primary-text: #202124; /* Dark text on light blue button */
                 --btn-primary-hover: #93baf9;
+                --icon-url: url('notheredark.png');
             }
         }
 
@@ -55,18 +59,13 @@
             width: 90%;
         }
 
-        /* Chrome Error Icon (Base64) */
         .icon {
-            width: 72px; 
-            height: 72px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23737373"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>');
+            width: 32px; 
+            height: 42px;
+            background-image: var(--icon-url);
             background-size: contain;
             background-repeat: no-repeat;
-            margin-bottom: 20px;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .icon { filter: invert(0.2) brightness(1.5); }
+            margin-bottom: 30px;
         }
 
         h1 {
@@ -115,7 +114,7 @@
             font-size: 14px;
             font-weight: 500;
             padding: 8px 24px;
-            border-radius: 4px; /* Chrome buttons are slightly more rectangular */
+            border-radius: 4px;
             transition: background-color 0.1s;
             outline: none;
         }
@@ -132,13 +131,8 @@
 
         .btn-reload {
             background-color: var(--btn-primary-bg);
-            color: #fff;
-            border: none;
-        }
-
-        /* Adjusting text color for dark mode button */
-        @media (prefers-color-scheme: dark) {
-            .btn-reload { color: #202124; }
+            color: var(--btn-primary-text);
+            border: 1px solid transparent;
         }
 
         .btn-reload:hover {
