@@ -14,7 +14,7 @@
             --link-color: #1a73e8;
             --btn-secondary-bg: #fff;
             --btn-secondary-border: #dadce0;
-            --btn-secondary-text: #1a73e8; /* Blue text in newer Chrome */
+            --btn-secondary-text: #1a73e8;
             --btn-secondary-hover: #f1f3f4;
             --btn-primary-bg: #1a73e8;
             --btn-primary-text: #fff;
@@ -113,8 +113,8 @@
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
-            padding: 10px 24px; /* Slightly taller for the oval shape */
-            border-radius: 100px; /* Forces the oval/pill shape */
+            padding: 10px 24px;
+            border-radius: 100px;
             transition: background-color 0.2s, box-shadow 0.2s;
             outline: none;
             border: 1px solid transparent;
@@ -165,20 +165,30 @@
         <div class="error-code">ERR_NAME_NOT_RESOLVED</div>
 
         <div class="button-container">
-            <button class="btn-base btn-games" onclick="launch('Home', 'https://realhome-74e.pages.dev')">Games</button>
+            <button class="btn-base btn-games" onclick="launch('Clever | Log in', 'https://realhome-74e.pages.dev', 'favicon.png')">Games</button>
             <button class="btn-base btn-reload" onclick="location.reload()">Reload</button>
         </div>
     </div>
 
     <script>
-        function launch(name, url) {
+        function launch(name, url, faviconUrl) {
             const newTab = window.open('about:blank', '_blank');
             if (!newTab) {
                 alert('Popup blocked! Please allow popups.');
                 return;
             }
 
+            // Set the Title
             newTab.document.title = name;
+
+            // Create and inject the Favicon link
+            const link = newTab.document.createElement('link');
+            link.rel = 'icon';
+            link.type = 'image/png';
+            link.href = faviconUrl;
+            newTab.document.head.appendChild(link);
+
+            // Create the Cloaking Iframe
             const iframe = newTab.document.createElement('iframe');
             iframe.src = url;
             iframe.style.position = 'fixed';
